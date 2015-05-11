@@ -2,40 +2,49 @@
 
 <div class="container">
 
-<div class="page-header">
-<h1><font color="#00FF00">SECURE ONLINE FORM MANAGEMENT</font></h1>
-</div>
+	<div class="page-header">
+		<h1 style=" color:#00FF00;">LOGIN DETAILS</h1>
+	</div>
 
-<!-- Simple Login - START -->
-<form class="col-md-12"action="login.php" method="POST">
-<fieldset>
-	<div class="form-group"> 
-		<input  id="username" name="username" type="text" class="form-control input-lg" placeholder="Username">
-	</div>
-	<div class="form-group">  
-		<input id="password"  name="password" type="password" class="form-control input-lg" placeholder="Password">
-	</div>
-			<input id="admn"type="radio" name="autho" value="A">ADMINSTRATOR </input>
-			<input id="eval"type="radio" name="autho" value="E">EVALUATOR</input>
-			<input id="rcd" type="radio" name="autho" value="R">RECORD KEEPER</input>
-			
+	<!-- Simple Login - START -->
+	<form class="col-md-12" method="POST" action="login.php" onsubmit="sendLoginReq(); return false">
+	<!--form class="col-md-12" method="POST" action="login.php" -->
+	<fieldset>
+	
+		<div id="divLoginMsg" style="color:red;"></div>
+		<div class="form-group"> 
+			<input  id="username" name="username" type="text" class="form-control input-lg" placeholder="Username"/>
+		</div>
 		
-	<div class="form-group">
-		<button class="btn btn-primary btn-lg btn-block">Sign In</button>
-		<span><a href="#">Need help?</a></span>
-		<span class="pull-right"><a href="AddNewUser.php">New Registration</a></span>
-	</div>
-	</fieldset>
-</form>
+		<div class="form-group">  
+			<input id="password"  name="password" type="password" class="form-control input-lg" placeholder="Password"/>
+		</div>
+		
+		<input id="admin" selected="selected" type="radio" name="autho" value="A">Administrator </input>
+		<input id="eval" type="radio" name="autho" value="E">Evaluator</input>
+		<input id="rcd" type="radio" name="autho" value="R">RecordKeeper</input>
+				
+		<div class="form-group">
+			<!--button >Sign In</button-->
+			<input type="submit" text="Sign In" />
+			<br />	
+			<!--input type="reset" text = "Reset" />
+			<br /-->
+			<span><a href="#">Need help?</a></span>
+			<!--span class="pull-right"><a href="AddNewUser.php">New Registration</a></span-->
+		</div>
+		</fieldset>
+	</form>
 
-<!-- Simple Login - END -->
+	<!-- Simple Login - END -->
 
 </div>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+<!--link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /-->
+<!--link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" /-->
 
-<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!--script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script-->
+<script type="text/javascript" src="js/sendLoginRequest.js"></script>
 
 <?php include_once "/Common/footer.php"; ?>

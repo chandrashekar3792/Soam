@@ -11,7 +11,7 @@ CREATE TABLE USERS(id int(10) NOT NULL AUTO_INCREMENT,
 					PRIMARY KEY (id));
 
  
-/*INSERT INTO USERS VALUES('1','XYZ','XYZ','A','00000','XYZ@XYZ.COM','C:/ABC/CDS.img');*/
+/*INSERT INTO USERS VALUES('1','admin','admin','A','9999999999','admin@admin.COM');
 
 /* Here form_title should be same as the table name of the corresponding form*/
 create table form_list(form_title varchar(20),
@@ -40,7 +40,7 @@ create table attendance_report(form_name varchar(20),
 			date varchar(20),
 			time_frm varchar(20),
 			time_to varchar(20),
-			
+			eval_signature varchar(40),
 			usn1 varchar(20) not null,bookletno1 varchar(10) not null,stu_sign1 varchar(20) not null,add_booklet1 varchar(10) not null,total_booklet1 int(2) not null,
 			usn2 varchar(20) not null,bookletno2 varchar(10) not null,stu_sign2 varchar(20) not null,add_booklet2 varchar(10) not null,total_booklet2 int(2) not null,			
 			usn3 varchar(20) not null,bookletno3 varchar(10) not null,stu_sign3 varchar(20) not null,add_booklet3 varchar(10) not null,total_booklet3 int(2) not null,
@@ -72,4 +72,5 @@ create table attendance_report(form_name varchar(20),
 			usn29 varchar(20) not null,bookletno29 varchar(10) not null,stu_sign29 varchar(20) not null,add_booklet29 varchar(10) not null,total_booklet29 int(2) not null,			
 			usn30 varchar(20) not null,bookletno30 varchar(10) not null,stu_sign30 varchar(20) not null,add_booklet30 varchar(10) not null,total_booklet30 int(2) not null,
 */			
-			primary key(form_name));
+			primary key(form_name)
+			, foreign key(eval_signature) references signatures(signature));
