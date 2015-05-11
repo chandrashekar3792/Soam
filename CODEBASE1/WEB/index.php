@@ -13,16 +13,16 @@
 	
 		<div id="divLoginMsg" style="color:red;"></div>
 		<div class="form-group"> 
-			<input  id="username" name="username" type="text" class="form-control input-lg" placeholder="Username"/>
+			<input  id="username" name="username" type="text" class="form-control input-lg" placeholder="Username" required/>
 		</div>
 		
 		<div class="form-group">  
-			<input id="password"  name="password" type="password" class="form-control input-lg" placeholder="Password"/>
+			<input id="password"  name="password" type="password" class="form-control input-lg" placeholder="Password" required/>
 		</div>
 		
-		<input id="admin" selected="selected" type="radio" name="autho" value="A">Administrator </input>
-		<input id="eval" type="radio" name="autho" value="E">Evaluator</input>
-		<input id="rcd" type="radio" name="autho" value="R">RecordKeeper</input>
+		<input id="admin" selected="selected" type="radio" name="autho" value="A" required>Administrator </input>
+		<input id="eval" type="radio" name="autho" value="E" required>Evaluator</input>
+		<input id="rcd" type="radio" name="autho" value="R" required>RecordKeeper</input>
 				
 		<div class="form-group">
 			<!--button >Sign In</button-->
