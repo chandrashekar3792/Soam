@@ -29,9 +29,9 @@ insert into form_list values("attendance_report","Form keeps track of All studen
 
 create table attendance_report(
 			form_name varchar(20),
-			eval_signature varchar(40),
+			signed_by int(20),
 			degree varchar(20) not null,
-			semester int(2) not null,
+			semester varchar(2) not null,
 			exam_MMYYY varchar(20) not null,
 			branch varchar(20),
 			subject varchar(20),
@@ -42,15 +42,16 @@ create table attendance_report(
 			date varchar(20),
 			time_frm varchar(20),
 			time_to varchar(20),
-			usn1 varchar(20) not null,bookletno1 varchar(10) not null,stu_sign1 varchar(20) not null,add_booklet1 varchar(10) not null,total_booklet1 int(2) not null,
-			usn2 varchar(20) not null,bookletno2 varchar(10) not null,stu_sign2 varchar(20) not null,add_booklet2 varchar(10) not null,total_booklet2 int(2) not null,			
-			usn3 varchar(20) not null,bookletno3 varchar(10) not null,stu_sign3 varchar(20) not null,add_booklet3 varchar(10) not null,total_booklet3 int(2) not null,
-			usn4 varchar(20) not null,bookletno4 varchar(10) not null,stu_sign4 varchar(20) not null,add_booklet4 varchar(10) not null,total_booklet4 int(2) not null,			
-			usn5 varchar(20) not null,bookletno5 varchar(10) not null,stu_sign5 varchar(20) not null,add_booklet5 varchar(10) not null,total_booklet5 int(2) not null,
-			usn6 varchar(20) not null,bookletno6 varchar(10) not null,stu_sign6 varchar(20) not null,add_booklet6 varchar(10) not null,total_booklet6 int(2) not null,			
-			usn7 varchar(20) not null,bookletno7 varchar(10) not null,stu_sign7 varchar(20) not null,add_booklet7 varchar(10) not null,total_booklet7 int(2) not null,
-			usn8 varchar(20) not null,bookletno8 varchar(10) not null,stu_sign8 varchar(20) not null,add_booklet8 varchar(10) not null,total_booklet8 int(2) not null,			
-			usn9 varchar(20) not null,bookletno9 varchar(10) not null,stu_sign9 varchar(20) not null,add_booklet9 varchar(10) not null,total_booklet9 int(2) not null,
+			usn1 varchar(20) not null,bookletno1 varchar(20) not null,stu_sign1 varchar(20) not null,add_booklet1 varchar(20) not null,total_booklet1 varchar(20) not null,
+			usn2 varchar(20) not null,bookletno2 varchar(20) not null,stu_sign2 varchar(20) not null,add_booklet2 varchar(20) not null,total_booklet2 varchar(20) not null,			
+			usn3 varchar(20) not null,bookletno3 varchar(20) not null,stu_sign3 varchar(20) not null,add_booklet3 varchar(20) not null,total_booklet3 varchar(20) not null,
+			usn4 varchar(20) not null,bookletno4 varchar(20) not null,stu_sign4 varchar(20) not null,add_booklet4 varchar(20) not null,total_booklet4 varchar(20) not null,			
+			usn5 varchar(20) not null,bookletno5 varchar(20) not null,stu_sign5 varchar(20) not null,add_booklet5 varchar(20) not null,total_booklet5 varchar(20) not null,
+			usn6 varchar(20) not null,bookletno6 varchar(20) not null,stu_sign6 varchar(20) not null,add_booklet6 varchar(20) not null,total_booklet6 varchar(20) not null,			
+			usn7 varchar(20) not null,bookletno7 varchar(20) not null,stu_sign7 varchar(20) not null,add_booklet7 varchar(20) not null,total_booklet7 varchar(20) not null,
+			usn8 varchar(20) not null,bookletno8 varchar(20) not null,stu_sign8 varchar(20) not null,add_booklet8 varchar(20) not null,total_booklet8 varchar(20) not null,			
+			usn9 varchar(20) not null,bookletno9 varchar(20) not null,stu_sign9 varchar(20) not null,add_booklet9 varchar(20) not null,total_booklet9 varchar(20) not null,primary key(form_name),
+			foreign key(signed_by) references signatures(userid));
 /*			usn10 varchar(20) not null,bookletno10 varchar(10) not null,stu_sign10 varchar(20) not null,add_booklet10 varchar(10) not null,total_booklet10 int(2) not null,			
 			usn11 varchar(20) not null,bookletno11 varchar(10) not null,stu_sign11 varchar(20) not null,add_booklet11 varchar(10) not null,total_booklet11 int(2) not null,
 			usn12 varchar(20) not null,bookletno12 varchar(10) not null,stu_sign12 varchar(20) not null,add_booklet12 varchar(10) not null,total_booklet12 int(2) not null,			
@@ -73,5 +74,4 @@ create table attendance_report(
 			usn29 varchar(20) not null,bookletno29 varchar(10) not null,stu_sign29 varchar(20) not null,add_booklet29 varchar(10) not null,total_booklet29 int(2) not null,			
 			usn30 varchar(20) not null,bookletno30 varchar(10) not null,stu_sign30 varchar(20) not null,add_booklet30 varchar(10) not null,total_booklet30 int(2) not null,
 */			
-			primary key(form_name),
-			foreign key(eval_signature) references signatures(signaturepath));
+			/*SET FOREIGN_KEY_CHECKS=0;

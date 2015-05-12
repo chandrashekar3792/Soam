@@ -12,7 +12,7 @@ function checkPass()
     //Compare the values in the password field 
     //and the confirmation field
     if(pass1.value == pass2.value){
-		alert("Pass Match");
+		
         //The passwords match. 
         //Set the color to the good color and inform
         //the user that they have entered the correct password 
@@ -26,7 +26,7 @@ function checkPass()
         //Set the color to the bad color and
         //notify the user.
         //pass2.style.backgroundColor = badColor;
-		alert("Pass Mismatch");
+		
         message.style.color = badColor;
         message.innerHTML = "Passwords Do Not Match!"
     }

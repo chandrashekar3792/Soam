@@ -20,14 +20,13 @@
 			<label for="email">
 			E-mail address:
 			</label>
-			<input type="email" name="email" id="email" size=”30”  maxlength=”25” required
-			placeholder="jane.doe@example.com" multiple />
+			<input type="email" name="email" id="email" size=”30”  maxlength=”25”
+			placeholder="jane.doe@example.com"  required />
 		</p>
-		
 		<p>
 			<label for="telephone">Telephone number: </label>
-			<input type="tel" name="telephone" id="telephone"  size=”30” maxlength=”25” required
-				  placeholder="(000) 000-0000"/>
+			<input type="tel" name="telephone" id="telephone"  size=”30” maxlength=”25”
+				  placeholder="(000) 000-0000" required/>
 		</p>
 
 		<p>
@@ -47,7 +46,7 @@
 		
 		<p>
 			<label> Signature: </label>
-			<input type="text" name="text"/>
+			<input type="text" name="text" required/>
 			<?php include_once "UploadDoc.php" ?>
 		<p>
 
