@@ -1,6 +1,6 @@
 <html>
 <head>
- <title>home.php</title>
+ <title>home</title>
  </head>
  <body>
    <h1>LIST OF FORM TEMPLATES</h1>
@@ -19,8 +19,8 @@ $result=mysql_query("select count(form_title) from form_list");
 $rowcount=mysql_num_rows($result);
 //echo $rowcount;
 
-//$result = mysql_query("select form_title  from form_list");
-for($i=0;$i<$rowcount;$i=++)
+$result = mysql_query("select form_title  from form_list");
+for($i=0;$i<$rowcount;$i++)
 {
 $row = mysql_fetch_array($result, MYSQL_BOTH);
 //$value=$row[$i];

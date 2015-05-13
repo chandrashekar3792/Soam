@@ -11,10 +11,11 @@ $password    =    '';
 $database    =    'FORM_MANAGEMENT';
 $conn=mysql_connect("localhost","root","") or die("could not connect my sql");
 mysql_select_db($database,$conn) or die("could connect to Database");
-
+?>
 //$result=mysql_query("select count(form_title) from form_list");
 //echo $rowcount;
-
+<form action="backend.php">
+<?php
 print "<h2>List of Form Names</h2>";
 
 $result = mysql_query("select form_title  from form_list");

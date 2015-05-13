@@ -3,7 +3,7 @@ include_once "/Common/header.php";
 
 include 'dbconnect.php';
 $formtitle=extract($_POST);
-/*$query=mysql_query(insert into attendance_report values("position","[10px,10px]","[60px,10px]",
+/*$query=mysql_query(insert into attendance_report values("positio","2","[10px,10px]","[60px,10px]",
 "[10px,40px]","[60px,40px]",
 "[10px,70px]","[60px,70px]",
 "[10px,100px]","[60px,100px]",
@@ -32,14 +32,42 @@ $formtitle=extract($_POST);
 "[10px,770px]", "[60px,770px]",
 "[10px,800px]", "[60px,800px]",
 "[10px,830px]");*/
-$result=mysql_query("select * from attendance_report where form_name='position'");?>
+$result=mysql_query("select * from attendance_report where form_name='positio'");?>
 
 <form action="saveaction.php">
 <?php
-	for($colscount=1;$colscount<mysql_num_fields($result);$colscount++)
-	{
-	 $colvalue = mysql_result($result,$colsCount);
-	($left,$top)=parse($result[colscount]);
+function parse($str)
+{
+
+$pos1 = strpos($str,"[");
+$pos2 = strpos($str,",");
+$pos3 = strpos($str,"]");
+
+
+if ($pos1 === false || $pos2 === false || $pos3 === false  ) {
+   
+} else {
+
+	
+	$top=substr($str,$pos1+1,$pos2-1-$pos1);
+	//echo $top;
+	$left=substr($str,$pos2+1,$pos3-1-$pos2);
+	//echo $left;
+	return $top,$left;
+	
+}
+}
+	$colscount=mysql_num_fields($result);
+//echo $colscount;
+$i=1;
+$row = mysql_fetch_array($result, MYSQL_BOTH);
+//echo $row[0]."is the entry at index 0";
+while($i<$colscount)
+{
+($top,$left)=parse($row[$i]);
+	$i=$i+1;
+
+	
 ?>
  <input type="text" value="text" style="position:absolute; top:<?php echo $top ?>;left:<?php echo $left ?>"></input>
 <?php
