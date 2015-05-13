@@ -1,2 +1,0 @@
-onsubmit=”checkIFrame();return false”
-<form method=”post” action=”SaveCustomer.php” target=”hiddenFrame”>
