@@ -72,7 +72,7 @@ function sendLoginReq()
 		}//ebd if uf readtState == 4
 	}//end of onreadystatechange() anonymous function...
 	
-	xhrReq.open("post","login.php", true);
+	xhrReq.open("post","AuthenticateUser.php", true);
 	xhrReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhrReq.send(loginPostReq);
 	//alert("Sent XHR request");

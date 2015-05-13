@@ -7,7 +7,7 @@
 	</div>
 
 	<!-- Simple Login - START -->
-	<form class="col-md-12" method="POST" action="login.php" onsubmit="sendLoginReq(); return false">
+	<form class="col-md-12" method="POST" action="AuthenticateUser.php" onsubmit="sendLoginReq(); return false">
 	<!--form class="col-md-12" method="POST" action="login.php" -->
 	<fieldset>
 	
