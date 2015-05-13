@@ -24,6 +24,7 @@ function deleteSelectedTBox()
 		
 	}//If any text box is selected, on then delete..
 }
+
 function addNewTextBox()
 {
 	//alert("Adding text box");
@@ -154,5 +155,79 @@ function tbSelect()
 
 function SaveNewForm()
 {
-	alert("To DO: to save new form with text fields");
+	//alert("To DO: to save new form with text fields");
+	var formSaveGetReq = createFormSaveGetReq();
+	
+	//Take the list of all the textbox arrays and create a post request...
+	
+	//Take the image path and upload the image file...
+	
+	//create a xhr POST request and send to server...
+	
+	//wait for correct response and redirect to Admin home page....
 }
+
+function encodeNameAndValue(sName, sValue) 
+{ 
+	var sParam = encodeURIComponent(sName); 
+	sParam += "="; 
+	sParam += encodeURIComponent(sValue); 
+	return sParam; 
+}
+
+function createFormSaveGetReq()
+{
+	var paramsArray = new Array();
+	
+	for(i=0;i<
+	paramsArray.push(encodeNameAndValue("autho",RadioValue));
+	
+	return paramsArray.join("&");
+	
+}
+
+function sendFormSaveReq()
+{
+	var divElem = document.getElementById("divLoginMsg");
+	divElem.innerHTML = "";
+	//alert("Sending Login XHR REQ");
+	//var xhrReq = zXmlHttp.createRequest();
+	frmSavePostReq = createFormSaveGetReq();
+	var xhrReq = new XMLHttpRequest();
+	xhrReq.async = true;
+	xhrReq.onreadystatechange = function()
+	{
+		if(xhrReq.readyState == 4)
+		{
+			//alert("Received XHR response ");
+			if(xhrReq.status == 200)
+			{
+				//alert("Correct response received");
+				//transformQueXml(xhrReq.responseText);
+				if(xhrReq.responseText == "Failure")
+				{
+					var divElem = document.getElementById("divLoginMsg");
+					divElem.innerHTML = "Failed To Save the form..";
+					//divElem.innerHTML = xhrReq.responseText;
+				}//end of if login failure..
+				else
+				{
+					// var divElem = document.getElementById("divLoginMsg");
+					// divElem.innerHTML = "Login Successful";
+					
+					//Set Logged In Cookie..
+					//setCookie("LogInUser",loginPostReq);
+					
+					//redirect to AdminLoginPage.php
+					window.location=xhrReq.responseText;
+					
+				}//end of else login success..
+			}//end of if XHR status == 200
+		}//ebd if uf readtState == 4
+	}//end of onreadystatechange() anonymous function...
+	
+	xhrReq.open("get","SaveFormBackend.php", true);
+	//xhrReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhrReq.send(frmSavePostReq);
+	//alert("Sent XHR request");
+}//end of function sendReq..

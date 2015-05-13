@@ -1,7 +1,15 @@
 <?php
-include_once "/Common/header.php";
+//include_once "/Common/header.php";
 
-include 'dbconnect.php';
+$host        =    'localhost';
+$user        =    'root';
+$password    =    '';
+
+$database    =    'FORM_MANAGEMENT';
+$conn=mysql_connect("localhost","root","") or die("could not connect my sql");
+mysql_select_db($database,$conn) or die("could connect to Database");
+
+//include 'dbconnect.php';
 $formtitle=extract($_POST);
 /*$query=mysql_query(insert into attendance_report values("positio","2","[10px,10px]","[60px,10px]",
 "[10px,40px]","[60px,40px]",
@@ -53,7 +61,8 @@ if ($pos1 === false || $pos2 === false || $pos3 === false  ) {
 	//echo $top;
 	$left=substr($str,$pos2+1,$pos3-1-$pos2);
 	//echo $left;
-	return $top,$left;
+	$myarray = array($top,$left);
+	return $myarray;
 	
 }
 }
@@ -64,25 +73,27 @@ $row = mysql_fetch_array($result, MYSQL_BOTH);
 //echo $row[0]."is the entry at index 0";
 while($i<$colscount)
 {
-($top,$left)=parse($row[$i]);
+$myarray=parse($row[$i]);
 	$i=$i+1;
 
 	
 ?>
- <input type="text" value="text" style="position:absolute; top:<?php echo $top ?>;left:<?php echo $left ?>"></input>
+ <input type="text" value="text" style="position:absolute; top:<?php echo $myarray[0] ?>;left:<?php echo $myarray[1] ?>"></input>
 <?php
  }
  $path=mysql_query("select form_img_path from form_list where form_title='$formtitle'");
+ echo $path;
 ?> 
 <body background="<?php echo $path; ?>"> 
-<p> FORM NAME: <input type=text,name=FORMNAME > </p>
+<p> FORM NAME: <input type="text",name="FORMNAME"/ > </p>
 
-<input type=submit, value=save>
+<input type="submit", value="save"/>
 </body>
+</form>
 
 <?php
 
-include_once "/Common/footer.php";
+//include_once "/Common/footer.php";
 ?>
 
 

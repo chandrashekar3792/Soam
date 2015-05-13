@@ -11,7 +11,7 @@ CREATE TABLE USERS(id int(10) NOT NULL AUTO_INCREMENT,
 					PRIMARY KEY (id));
 
  
-/*INSERT INTO USERS VALUES('1','admin','admin','A','9999999999','admin@admin.COM');
+/*INSERT INTO USERS VALUES('1','chandru','chandru','A','9999999999','admin@admin.COM');
 
 /* Here form_title should be same as the table name of the corresponding form*/
 create table form_list(form_title varchar(20),

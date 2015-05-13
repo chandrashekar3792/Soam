@@ -44,11 +44,16 @@
 		</p>
 		
 		
-		<p>
-			<label> Signature: </label>
-			<input type="text" name="text" required/>
-			<?php include_once "UploadDoc.php" ?>
-		<p>
+		<table>
+			<tr>
+				<td><label> Signature: </label></td>
+				<!--input type="text" name="text"/-->
+				<td><?php include_once "UploadDoc.php" ?></td>
+			</tr>
+		</table>
+		<!--div id="fileDisplayArea"-->
+		<img id="UploadedImage"></img>
+		
 
 		<p> 
 			<button type="submit" class="create_profile"> Create Account</button>

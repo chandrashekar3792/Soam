@@ -1,5 +1,6 @@
 function loadImageOnBrowser()
 {
+	alert("Fun called");
 	var fileInput = document.getElementById('fileInput');
 	var fileDisplayArea = document.getElementById('fileDisplayArea');
 

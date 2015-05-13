@@ -1,10 +1,10 @@
 <?php 
-$Title = "New Form";
+$Title = "Add New Form";
 include_once "../common/header.php";
 ?>
 
 <script type="text/javascript" src="../js/AddNewForm.js"></script>
-<table border="1.0px">
+<table border="0.0px">
 	<thead>
 	</thead>
 	<tfoot>
@@ -15,7 +15,7 @@ include_once "../common/header.php";
 				<!--img width="640px" height="480px" src="../images/admin module image.JPG" /-->
 				<!--img width="640px" height="480px" src="../images/attendance_report.jpg" /-->
 				<div id="fileDisplayArea">
-					<img opacity="100" id="UploadedImage" width="728px" height="512px"/>
+					<img opacity="100" id="UploadedImage" width="800px" height="512px"/>
 					<!--div id="HtmlElemDisplayContainer" style="position:absolute; top:165px; left:118px"-->
 				</div>
 			</td>
@@ -33,7 +33,10 @@ include_once "../common/header.php";
 			<td align="center" valign="middle"><?php include_once "./UploadDoc.php"; ?>
 			</td>
 			<td>
-				<button onclick="SaveNewForm()"> Save Form</button>
+				<form style="margin:0px; padding:0px">
+					<span style="color:White"> Form Title<input style="width:100px; height:30px" type="text" id="PosX" placeholder="File Title" required/>
+					<br /><br /><button style="width:100px; height:30px" onclick="SaveNewForm()"> Save Form</button>
+				</form>
 			</td>
 		</tr>
 		<!--tr>

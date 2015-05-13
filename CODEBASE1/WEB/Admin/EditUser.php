@@ -1,4 +1,4 @@
-<?php $Title = "Edit Profile"; include_once "../Common/header.php" ?>
+<?php $Title = "Sign Up"; include_once "../Common/header.php" ?>
 
 <form method="post" action="./ValidateNewUser.php">
 	<fieldset>
@@ -49,14 +49,22 @@
 		</p>
 		
 		
-		<p>
-			<label> Signature: </label>
-			<input type="text" name="text"/>
-			<?php include_once "UploadDoc.php" ?>
-		<p>
+		
+			<table>
+				<tr>
+				<td><label> Signature: </label></td>
+		<!--input type="text" name="text"/-->
+			<td><?php include_once "UploadDoc.php" ?></td>
+			</tr>
+			</table>
+			<!--div id="fileDisplayArea">
+			</div-->
+			<img id="UploadedImage"></img>
+			
+	
 
 		<p> 
-			<button type="submit" class="create_profile"> Create Account</button>
+			<button type="submit" class="create_profile"> Modify Account</button>
 			<button type="reset" class="create_profile"> Cancel</button>
 		</p>
 

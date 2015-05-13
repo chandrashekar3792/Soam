@@ -40,16 +40,16 @@
 	<p><a href="./Edituser.php">Edit an Existing User Account</a><br /></p>
 	<p><a href="./SearchUser.php">Delete an Existing User Account</a><br /></p-->
 	<tr>
-	<td><a href="./AddNewForm.php" > <img src = "../images/logo1.png" title = "Click Here Upload A New Document" alt = "Click here to add a new user" style="width:300px; height:100px"  /></a></td>
-	<td><a href="./AddNewUser.php" > <img src = "../images/logo1.png" title = "Click Here Add A New User" alt = "Click here to add a new user" style="width:300px; height:100px" /> </a></td>
+	<td><a href="./AddNewForm.php" > <img src = "../images/logo2.png" title = "Click Here Upload A New Document" alt = "Click Here Upload A New Document" style="width:300px; height:100px"  /></a></td>
+	<td><a href="./AddNewUser.php" > <img src = "../images/logo2a.png" title = "Click Here Add A New User" alt = "Click here to add a new user" style="width:300px; height:100px" /> </a></td>
 	</tr>
 	<tr>
-	<td><a href="" > <img src = "../images/logo1.png" title = "Click Here Yet To Add A Functionality"  alt = "Click here to add a new user" style="width:300px; height:100px" /></a></td>
-	<td><a href="./Edituser.php" > <img src = "../images/logo1.png" title = "Click Here Edit An Existing User" alt = "Click here to add a new user" style="width:300px; height:100px" /> </a></td>
+	<td><a href="" > <img src = "../images/logo2b.png" title = "Click Here To Add A Functionality"  alt = "Click Here To Add A Functionality" style="width:300px; height:100px" /></a></td>
+	<td><a href="./Edituser.php" > <img src = "../images/logo2c.png" title = "Click Here To Edit An Existing User" alt = "Click Here To Edit An Existing User" style="width:300px; height:100px" /> </a></td>
 	</tr>
 	<tr>
-	<td><a href="" > <img src = "../images/logo1.png" title = "Click Here Delete A Form" alt = "Click here to add a new user" style="width:300px; height:100px" /> </a></td>
-	<td><a href="./SearchUser.php" > <img src = "../images/logo1.png" title = "Click Here Search An User" alt = "Click here to add a new user" style="width:300px; height:100px" /> </a></td>
+	<td><a href="" > <img src = "../images/logo2d.png" title = "Click Here Delete A Form" alt = "Click Here Delete A Form" style="width:300px; height:100px" /> </a></td>
+	<td><a href="./DeleteUser.php" > <img src = "../images/logo2e.png" title = "Click Here Search An User" alt = "Click Here Search An User" style="width:300px; height:100px" /> </a></td>
 	</tr>
 	</table>
 	

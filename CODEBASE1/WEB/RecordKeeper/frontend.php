@@ -1,5 +1,7 @@
-<html>
-<body>
+<?php
+$Title = "Records";
+include_once "../common/header.php";
+?>
 <h1>User Records</h1>
 <div style = "float:left; width: 50%;">
 
@@ -12,9 +14,8 @@ $database    =    'FORM_MANAGEMENT';
 $conn=mysql_connect("localhost","root","") or die("could not connect my sql");
 mysql_select_db($database,$conn) or die("could connect to Database");
 ?>
-//$result=mysql_query("select count(form_title) from form_list");
-//echo $rowcount;
-<form action="backend.php">
+
+<form action="frontend.php">
 <?php
 print "<h2>List of Form Names</h2>";
 
@@ -28,7 +29,8 @@ $row = mysql_fetch_array($result, MYSQL_BOTH);
 //print $value;
 ?>
 <input type = "radio"
-                 name = "name" />
+                 name = "name" 
+				 id="formtitle"/>
                  <span> <?php print  $row[0]; ?></span><br/>
 
 <?php
@@ -55,7 +57,8 @@ $row = mysql_fetch_array($result, MYSQL_BOTH);
 //print_r($row);
 ?>
 <input type = "radio"
-                 name = "name"/>
+                 name = "name"
+				 id="username"/>
                  <span> <?php print $row[0]; ?></span><br/>
 
 <?php
@@ -65,9 +68,15 @@ $i=$i+1;
 </div>
 
 
+<input type="submit" value="search by formtitle" name="search by formtitle" id="search by formtitle" align="right"/>
+<input type="submit" value="search by username" name="search by username" id="search by username" align="left"/>
 </form>
-<input type="submit" value="submit" align="right"/>
 
 </body>
 </html>
 
+
+   
+<form action="backend.php">
+<input type="submit" value="submit" align="centre"/>
+</form>
