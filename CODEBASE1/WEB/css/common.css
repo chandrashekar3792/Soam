@@ -158,9 +158,17 @@ fieldset
 
 .logout
 {
-	position:fixed;
+	position:absolute;
 	height: 300px;
 	width: 300px;
-	right:110px;
-	top:175px;
+	right:160px;
+	top:135px;
 }
+
+#logo{
+		background-image: url("../images/logo1.png");
+		width: 981px;
+		height: 180px;
+		margin-left: auto;
+		margin-right: auto;
+	}

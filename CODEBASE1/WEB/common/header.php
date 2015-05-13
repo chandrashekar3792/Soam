@@ -13,8 +13,7 @@
 		<div class="nav">
 			<table>
 			      <tr>
-				      <td><img src ="../images/logo.png" style="width:100px;height:100px" /></td>
-			
+				      <td><img src ="../images/secure.jpg" style="width:100px;height:80px" /></td>
 					  <td> <h1 style="color:red;">SECURED ONLINE FORM MANAGEMENT</h1></td>
 				  </tr>
 		    </table>

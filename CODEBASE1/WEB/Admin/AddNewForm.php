@@ -15,15 +15,15 @@ include_once "../common/header.php";
 				<!--img width="640px" height="480px" src="../images/admin module image.JPG" /-->
 				<!--img width="640px" height="480px" src="../images/attendance_report.jpg" /-->
 				<div id="fileDisplayArea">
-					<img opacity="100" id="UploadedImage" width="640px" height="480px"/>
+					<img opacity="100" id="UploadedImage" width="728px" height="512px"/>
 					<!--div id="HtmlElemDisplayContainer" style="position:absolute; top:165px; left:118px"-->
 				</div>
 			</td>
 			<td align="left" valign="top">
 				<!--Display toolbox here-->
 				<form style="margin:0px; padding:0px" id="toolBox" >
-					<br /><span> Position X: <input style="width:75px; height:30px" type="text" id="PosX" placeholder="X-Position" ></input></span><br />
-					<br /><span> Position Y: <input style="width:75px; height:30px" type="text" id="PosY" placeholder="Y-Position" ></input></span><br />
+					<br /><span style="color:White"> Position X: <input style="width:75px; height:30px" type="text" id="PosX" placeholder="X-Position" > px</input></span><br />
+					<br /><span style="color:White"> Position Y: <input style="width:75px; height:30px" type="text" id="PosY" placeholder="Y-Position" > px</input></span><br />
 					<br /><input type="button" value="Add New Text Box" onclick="addNewTextBox()"></input>
 					<!--br /><br /><input type="button" value="Delete Selected Text Box" onclick="deleteSelectedTBox()"></input-->
 				</form>

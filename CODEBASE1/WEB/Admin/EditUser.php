@@ -1,4 +1,4 @@
-<?php $Title = "Sign Up"; include_once "../Common/header.php" ?>
+<?php $Title = "Edit Profile"; include_once "../Common/header.php" ?>
 
 <form method="post" action="./ValidateNewUser.php">
 	<fieldset>
