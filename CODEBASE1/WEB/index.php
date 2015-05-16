@@ -26,11 +26,11 @@
 				
 		<div class="form-group">
 			<!--button >Sign In</button-->
-			<input type="submit" text="Sign In" />
+			<br/><input type="submit" value ="Let Me In" size="20" />
 			<br />	
 			<!--input type="reset" text = "Reset" />
 			<br /-->
-			<span><a href="#">Need help?</a></span>
+			<!--<span><a href="#">Need help?</a></span>-->
 			<!--span class="pull-right"><a href="AddNewUser.php">New Registration</a></span-->
 		</div>
 		</fieldset>

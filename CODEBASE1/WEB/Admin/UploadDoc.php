@@ -1,7 +1,7 @@
 
 	<div>
 		
-		<input onchange="loadImageOnBrowser()" type="file" id="fileInput" required></input>
+		<input onchange="loadImageOnBrowser()" type="file" id="fileInput" name="fileInput" required></input>
 	</div>
 	<!--div id="fileDisplayArea"></div-->
 </div>

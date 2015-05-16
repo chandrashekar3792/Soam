@@ -77,4 +77,5 @@ function sendLoginReq()
 	xhrReq.send(loginPostReq);
 	//alert("Sent XHR request");
 }//end of function sendReq..
+window.history.forward(1);
 

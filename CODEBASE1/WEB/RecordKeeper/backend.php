@@ -3,11 +3,31 @@ include_once "/Common/header.php";
 
 include 'dbconnect.php';
 extract($_POST);
-$result=mysql_query("select * from attendance_report where form_name='positio'");
-$result1=mysql_query("select * from attendance_report where form_name=''");
+$myarry = parse($formrecord);
+$result=mysql_query("select * from $myarry[1] where form_name='position'");
+$query=mysql_query("select form_img_path from form_list where form_title='$myarry[1]'");
+$count=mysql_num_rows($query);
+$pathlist=mysql_fetch_array($query,MYSQL_BOTH);
+$result1=mysql_query("select * from $myarry[1] where form_name='$myarry[0]'");
 ?>
+<table border="1.0px">
+<thead>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>	
+<div id="fileDisplayArea">
+					<img  src = "<?php echo $pathlist[0];?>" opacity="100" id="UploadedImage" width="728px" height="512px"/>
+					<!--div id="HtmlElemDisplayContainer" style="position:absolute; top:165px; left:118px"-->
+				</div>
+				</td>
+				</tr>
+				</tbody>
 
-<form action="printaction.php">
+				</table>
+
 <?php
 function parse($str)
 {
@@ -26,7 +46,8 @@ if ($pos1 === false || $pos2 === false || $pos3 === false  ) {
 	//echo $top;
 	$left=substr($str,$pos2+1,$pos3-1-$pos2);
 	//echo $left;
-	return $top,$left;
+	$myarray = array($top,$left);
+	return $myarray;
 	
 }
 }
@@ -47,12 +68,11 @@ while($i<$colscount && $j<$colscount)
  <input type="text" value="<?php echo $row1[$j] ?>" style="position:absolute; top:<?php echo $top ?>;left:<?php echo $left ?>" disabled ></input>
 <?php
  }
- $path=mysql_query("select form_img_path from form_list where form_title='$formtitle'");
+ 
 ?> 
-<body background="<?php echo $path; ?>"> 
 
-
-<input type=submit, value=print>
+<input type="text" value="<?php echo $path; ?>" > </input>
+<input type="button" onClick="window.print()" value="print this page"/>
 </body>
 
 <?php

@@ -2,6 +2,7 @@ var textFields = new Array();
 var totalTxtBoxes = 0;
 var moveTB = false;
 var selectedTBox = null;
+var isImageUploaded = false;
 // window.onload = function()
 // {
 	// alert("onload fun called");
@@ -12,6 +13,24 @@ var selectedTBox = null;
 	// Container.x = imgDispContainer.x;
 	// Container.y = imgDispContainer.y;
 // }
+function resetAddNewFormUI()
+{
+	//alert("Resetting the add new form page");
+	
+	totalTxtBoxes = 0;
+	while(textFields.length > 0)
+	{
+		document.body.removeChild(textFields.pop());
+	}
+	document.getElementById("PosX").value = "";
+	document.getElementById("PosY").value = "";
+	document.getElementById("tName").value = "";
+	document.getElementById("form_title").value = "";
+	
+	alert("Form Added Successfully..");
+	window.location = "../Admin/AddNewForm.php";
+}
+
 function deleteSelectedTBox()
 {
 	if(selectedTBox != null)
@@ -37,14 +56,17 @@ function addNewTextBox()
 	// var xPos = (parseInt(document.getElementById("PosX").value) + Container.x) + "px";
 	// var yPos = (parseInt(document.getElementById("PosY").value) + Container.y) + "px";
 
+	//alert("add new tb");
 	 var xPos = document.getElementById("PosX").value + "px";
 	 var yPos = document.getElementById("PosY").value + "px";
+	 var tName = document.getElementById("tName").value;
 
 
 	if(xPos.length>2 && yPos.length>2)
 	{
 		var txtInputElem = document.createElement("input");
 		txtInputElem.type = "text";
+
 		txtInputElem.style.width = "100px";
 		txtInputElem.style.height = "25px";
 		txtInputElem.style.position = "absolute";
@@ -62,6 +84,7 @@ function addNewTextBox()
 		
 		textFields.push(txtInputElem);
 		totalTxtBoxes++;
+		txtInputElem.name = tName+"_"+totalTxtBoxes;
 	}//end of if valid position details entered..
 }//end of function addNewTextBox..
 
@@ -147,6 +170,7 @@ function tbSelect()
 	//console.log("selected..");
 	document.getElementById("PosX").value = this.style.top;
 	document.getElementById("PosY").value = this.style.left;
+	document.getElementById("tName").value = this.name;
 	this.value = "selected";
 	moveTB = true;
 	selectedTBox = this;
@@ -155,16 +179,22 @@ function tbSelect()
 
 function SaveNewForm()
 {
-	//alert("To DO: to save new form with text fields");
-	var formSaveGetReq = createFormSaveGetReq();
+	//alert("Creating GET req");
+	if(! isImageUploaded)
+	{
+		alert("First Upload the image");
+		return;
+	}
+	if(totalTxtBoxes <= 0)
+	{
+		var cont = confirm("No Text Boxes are added. Continue??");
+		if(cont == false)
+			return;
+	}
+	formSavePostReq = createFormSavePostReq();
+
+	sendFormSaveReq();
 	
-	//Take the list of all the textbox arrays and create a post request...
-	
-	//Take the image path and upload the image file...
-	
-	//create a xhr POST request and send to server...
-	
-	//wait for correct response and redirect to Admin home page....
 }
 
 function encodeNameAndValue(sName, sValue) 
@@ -175,12 +205,21 @@ function encodeNameAndValue(sName, sValue)
 	return sParam; 
 }
 
-function createFormSaveGetReq()
+function createFormSavePostReq()
 {
+
 	var paramsArray = new Array();
 	
-	for(i=0;i<
-	paramsArray.push(encodeNameAndValue("autho",RadioValue));
+	//adding form title to request.
+	paramsArray.push(encodeNameAndValue(document.getElementById("form_title").name,document.getElementById("form_title").value));
+	paramsArray.push(encodeNameAndValue("filePath",document.getElementById("fileInput").value));
+	
+	//alert(document.getElementById("fileInput").value);
+	//Adding all text boxes info to get request.
+	for(i=0;i<textFields.length;i++)
+	{
+		paramsArray.push(encodeNameAndValue(textFields[i].name,"["+parseInt(textFields[i].style.left)+","+parseInt(textFields[i].style.top)+"]"));
+	}
 	
 	return paramsArray.join("&");
 	
@@ -188,11 +227,10 @@ function createFormSaveGetReq()
 
 function sendFormSaveReq()
 {
-	var divElem = document.getElementById("divLoginMsg");
+	var divElem = document.getElementById("divFormSaveMsg");
 	divElem.innerHTML = "";
-	//alert("Sending Login XHR REQ");
 	//var xhrReq = zXmlHttp.createRequest();
-	frmSavePostReq = createFormSaveGetReq();
+	//frmSavePostReq = createFormSaveGetReq();
 	var xhrReq = new XMLHttpRequest();
 	xhrReq.async = true;
 	xhrReq.onreadystatechange = function()
@@ -206,28 +244,53 @@ function sendFormSaveReq()
 				//transformQueXml(xhrReq.responseText);
 				if(xhrReq.responseText == "Failure")
 				{
-					var divElem = document.getElementById("divLoginMsg");
+					var divElem = document.getElementById("divFormSaveMsg");
+					divElem.style.color = "red";
 					divElem.innerHTML = "Failed To Save the form..";
+					return;
 					//divElem.innerHTML = xhrReq.responseText;
-				}//end of if login failure..
+				}//end of if form save failure..
 				else
 				{
-					// var divElem = document.getElementById("divLoginMsg");
-					// divElem.innerHTML = "Login Successful";
+
+					var divElem = document.getElementById("divFormSaveMsg");
+					divElem.style.color = "green";
+					//divElem.innerHTML = "Save form successful..";
+					divElem.innerHTML = xhrReq.responseText;
+					resetAddNewFormUI();
 					
-					//Set Logged In Cookie..
-					//setCookie("LogInUser",loginPostReq);
 					
-					//redirect to AdminLoginPage.php
-					window.location=xhrReq.responseText;
-					
-				}//end of else login success..
+				}//end of form save success..
 			}//end of if XHR status == 200
 		}//ebd if uf readtState == 4
 	}//end of onreadystatechange() anonymous function...
 	
-	xhrReq.open("get","SaveFormBackend.php", true);
-	//xhrReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhrReq.send(frmSavePostReq);
+	xhrReq.open("POST","SaveFormBackend.php", true);
+	//xhrReq.open("POST","SaveFormBackend.php", true);
+	xhrReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	//xhrReq.setRequestHeader("Content-Type", "multipart/form-data");
+	
+	//enctype="multipart/form-data";
+	//alert(formSavePostReq+" is the post req");
+	xhrReq.send(formSavePostReq);
 	//alert("Sent XHR request");
 }//end of function sendReq..
+
+function displayRes(result)
+{
+	var divElem = document.getElementById("divFormSaveMsg");
+	isImageUploaded = result;
+	if(!result)
+	{
+		divElem.style.color = "red";
+		divElem.innerHTML = "Image Upload Failed. Try changing file name and Upload again.";
+	}
+	else
+	{
+		divElem.style.color = "green";	
+		divElem.innerHTML = "Image Uploaded Successfully";
+		elem=document.getElementById("uploadImageBtn").disabled="disabled";
+		document.getElementById("fileInput").disabled = "disabled";
+	}
+	
+}

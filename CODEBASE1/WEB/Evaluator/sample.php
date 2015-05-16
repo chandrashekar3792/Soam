@@ -85,7 +85,8 @@ while($i<$colscount)
 
 ?>
 
+</form>
+<input type="button" onClick="window.print()" value="print this page"/>
 
-		</form>
 </body>
 </html>

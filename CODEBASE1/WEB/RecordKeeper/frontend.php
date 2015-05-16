@@ -1,3 +1,4 @@
+<link type="text/css" rel="stylesheet" href="../css/button.css" />
 <?php
 $Title = "Records";
 include_once "../common/header.php";
@@ -15,9 +16,9 @@ $conn=mysql_connect("localhost","root","") or die("could not connect my sql");
 mysql_select_db($database,$conn) or die("could connect to Database");
 ?>
 
-<form action="frontend.php">
+<form action="userforms.php" method="POST">
 <?php
-print "<h2>List of Form Names</h2>";
+print "<h2>List of Form Titles</h2>";
 
 $result = mysql_query("select form_title  from form_list");
 $rowcount=mysql_num_rows($result);
@@ -29,8 +30,9 @@ $row = mysql_fetch_array($result, MYSQL_BOTH);
 //print $value;
 ?>
 <input type = "radio"
-                 name = "name" 
-				 id="formtitle"/>
+                 name = "name"
+                 value="<?php print  $row[0];?>"				 
+				 id="formtitle" />
                  <span> <?php print  $row[0]; ?></span><br/>
 
 <?php
@@ -58,7 +60,8 @@ $row = mysql_fetch_array($result, MYSQL_BOTH);
 ?>
 <input type = "radio"
                  name = "name"
-				 id="username"/>
+				 value="<?php print $row[0]; ?>"
+				 id="username" />
                  <span> <?php print $row[0]; ?></span><br/>
 
 <?php
@@ -66,10 +69,12 @@ $i=$i+1;
 }
 ?>
 </div>
-
-
-<input type="submit" value="search by formtitle" name="search by formtitle" id="search by formtitle" align="right"/>
-<input type="submit" value="search by username" name="search by username" id="search by username" align="left"/>
+<table>
+<tr>
+<td><input type="submit" value="search by form title" name="search by formtitle" id="search by formtitle" align="right"/></td>
+<td><input type="submit" value="search by username" name="search by username" id="search by username" align="left"/></td>
+</tr>
+</table>
 </form>
 
 </body>
@@ -77,6 +82,4 @@ $i=$i+1;
 
 
    
-<form action="backend.php">
-<input type="submit" value="submit" align="centre"/>
-</form>
+

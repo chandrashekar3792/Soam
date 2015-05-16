@@ -1,24 +1,5 @@
 <?php $Title = "Welcome Admin"; include_once "../Common/header.php" ?>
 <form class="doc" method="post" action="DeleteForm.php">
-
-
-	<script>
-		function bigImg(x) 
-		{
-			x.style.height = "100px";
-			x.style.width = "100px";
-			x.style.height = "50px";
-			x.style.width = "50px";
-		}
-
-		function normalImg(x) 
-		{
-			x.style.height = "50px";
-			 x.style.width = "50px";
-			x.style.height = "40px";
-			 x.style.width = "40px";
-		}
-</script>
  
 	<!--h1>Available Form Templates</h1-->
 	<h1 style = "margin-left:80px"> <font color="#DF0101" > Available Form Templates </font> </h1>
@@ -64,14 +45,7 @@
 	<p><a href="./SearchUser.php" id = "logo6" >Delete an Existing User Account</a><br /></p> -->
 	
 	
-	<div class="logout">
-		<!--button >Sign Out</button-->
-			<!--a href = "../logout.php" > <img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="border:0px; width:50px; height:50px;" src="../images/signout.png" /> </a-->
-			<a href = "../logout.php" > <img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="border:0px; width:40px; height:40px;" src="..//images/logout.png"" /> </a>
 	
-			<!--<p><a href = "../logout.php"> Sign Out </p></a> -->
-		<!-- Destroying the session and signing out the user -->
-	</div> 
 
 </form>
 <?php include_once "../Common/footer.php"; ?>

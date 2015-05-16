@@ -18,7 +18,8 @@ function checkPass()
         //the user that they have entered the correct password 
         //pass2.style.backgroundColor = goodColor;
         message.style.color = goodColor;
-        message.innerHTML = "Passwords Match!"
+        message.innerHTML = "Passwords Match!";
+		document.getElementById("mySubmit").disabled = false;
     }
 	else
 	{
@@ -29,5 +30,6 @@ function checkPass()
 		
         message.style.color = badColor;
         message.innerHTML = "Passwords Do Not Match!"
+		document.getElementById("mySubmit").disabled = true;
     }
 }  

@@ -1,5 +1,5 @@
 <?php $Title = "Delete User"; include_once "../Common/header.php" ?>  
-<form class="col-md-12" method="POST" action="SearchByUser.php " onsubmit="sendUserSearchReq(); return false">
+<form class="col-md-12" method="GET" action="SearchByUser.php" onsubmit="sendUserSearchReq(); return false">
 <fieldset>
 
 <p>
@@ -15,7 +15,7 @@
 </tr>
 </table>
 <p> 
-<input type="Submit"  value="Search"></input>
+<input type="Submit"  value="Search" ></input>
 </p>
 <div id="divSearchMsg" style="color:red;">
 
@@ -27,4 +27,5 @@
 
 </fieldset>
 </form>
+<script type="text/javascript" src="../../js/sendUserSearchReq.js"></script>
 <?php include_once "../Common/footer.php"; ?>

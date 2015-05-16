@@ -1,4 +1,10 @@
 <?php
+
+$Title = "New Form";
+include_once "../common/header.php";
+
+
+
 //include_once "/Common/header.php";
 
 $host        =    'localhost';
@@ -10,7 +16,16 @@ $conn=mysql_connect("localhost","root","") or die("could not connect my sql");
 mysql_select_db($database,$conn) or die("could connect to Database");
 
 //include 'dbconnect.php';
-$formtitle=extract($_POST);
+//extract($_POST);
+foreach ($_POST as $key=>$value)
+{
+//print  $key."value is".$value;
+$formtitle=$value;
+}
+?>
+
+<?php
+//$formtitle=extract($_POST);
 /*$query=mysql_query(insert into attendance_report values("positio","2","[10px,10px]","[60px,10px]",
 "[10px,40px]","[60px,40px]",
 "[10px,70px]","[60px,70px]",
@@ -40,9 +55,41 @@ $formtitle=extract($_POST);
 "[10px,770px]", "[60px,770px]",
 "[10px,800px]", "[60px,800px]",
 "[10px,830px]");*/
-$result=mysql_query("select * from attendance_report where form_name='positio'");?>
+//$result=mysql_query("select * from attendance_report where form_name='positio'");
+ $query=mysql_query("select form_img_path from form_list where form_title='$formtitle'");
+ $count=mysql_num_rows($query);
+  $pathlist=mysql_fetch_array($query,MYSQL_BOTH);
+  //for($i=0;$i<$count;$i++)
+  //{
+ // print $pathlist[0];
+  //}
+  
+ //$path=mysql_query($query);
+ //$row=mysql_fetch_field($path);
+ //echo $row;
+ //$row = mysql_fetch_assoc($query);
+ //echo $row;
+   // $filePath = $row['form_img_path'];
+?>
+<table border="1.0px">
+<thead>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>	
+<div id="fileDisplayArea">
+					<img  src = "<?php echo $pathlist[0];?>" opacity="100" id="UploadedImage" width="728px" height="512px"/>
+					<!--div id="HtmlElemDisplayContainer" style="position:absolute; top:165px; left:118px"-->
+				</div>
+				</td>
+				</tr>
+				</tbody>
 
-<form action="saveaction.php">
+				</table>
+
+<form action="saveaction.php" method="POST">
 <?php
 function parse($str)
 {
@@ -78,22 +125,22 @@ $myarray=parse($row[$i]);
 
 	
 ?>
- <input type="text" value="text" style="position:absolute; top:<?php echo $myarray[0] ?>;left:<?php echo $myarray[1] ?>"></input>
+ <input type="text"  style="position:absolute; top:<?php echo $myarray[0] ?>;left:<?php echo $myarray[1] ?>"></input>
 <?php
  }
- $path=mysql_query("select form_img_path from form_list where form_title='$formtitle'");
- echo $path;
 ?> 
-<body background="<?php echo $path; ?>"> 
-<p> FORM NAME: <input type="text",name="FORMNAME"/ > </p>
 
-<input type="submit", value="save"/>
-</body>
+
+<p> FORM NAME: <input type="text" name="FORMNAME" /> </p>
+
+<input type="text" value="<?php echo $formtitle; ?>" name="formtitle" ></input>
+<input type="submit" value="save" />
 </form>
+
 
 <?php
 
-//include_once "/Common/footer.php";
+include_once "../common/footer.php";
 ?>
 
 

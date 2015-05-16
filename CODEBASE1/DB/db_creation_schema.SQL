@@ -3,7 +3,7 @@ CREATE DATABASE FORM_MANAGEMENT;
 USE FORM_MANAGEMENT;
 
 CREATE TABLE USERS(id int(10) NOT NULL AUTO_INCREMENT,
-					name VARCHAR(20) NOT NULL,
+					name VARCHAR(20)  UNIQUE NOT NULL,
 					password VARCHAR(20) NOT NULL,
 					usertype ENUM('A', 'E', 'R') NOT NULL,
 					phone VARCHAR(12) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE USERS(id int(10) NOT NULL AUTO_INCREMENT,
 					PRIMARY KEY (id));
 
  
-/*INSERT INTO USERS VALUES('1','chandru','chandru','A','9999999999','admin@admin.COM');
+/*INSERT INTO USERS VALUES('5','priya','priya','A','9999999999','admin@admin.COM');
 
 /* Here form_title should be same as the table name of the corresponding form*/
 create table form_list(form_title varchar(20),
@@ -25,32 +25,36 @@ Create table signatures(userid int(20) not null,
 			primary key(userid),
 			foreign key(userid) references users(id));
 
-insert into form_list values("attendance_report","Form keeps track of All students attendance","B:\Phani_M_Tech_Files\M_Tech_2nd_Sem\Web Security\assignment\form_management_mini_project_REPOSITORY\OnlineFormManagementSystem\trunk\CODEBASE1\WEB\images\attendance_report.jpg");
+/*This below insertion into signatures is required. Don't delete this..*/
+insert into signatures values(1,"temp_path");
+
+insert into form_list values("attendance_report","Form keeps track of All students attendance","..\\images\\attendance_report.jpg");
 
 create table attendance_report(
-			form_name varchar(20),
-			signed_by int(20),
-			degree varchar(20) not null,
-			semester varchar(2) not null,
-			exam_MMYYY varchar(20) not null,
-			branch varchar(20),
-			subject varchar(20),
-			subcode varchar(20),
-			centre varchar(20),
-			usn_frm varchar(20),
-			usn_to varchar(20),
-			date varchar(20),
-			time_frm varchar(20),
-			time_to varchar(20),
-			usn1 varchar(20) not null,bookletno1 varchar(20) not null,stu_sign1 varchar(20) not null,add_booklet1 varchar(20) not null,total_booklet1 varchar(20) not null,
-			usn2 varchar(20) not null,bookletno2 varchar(20) not null,stu_sign2 varchar(20) not null,add_booklet2 varchar(20) not null,total_booklet2 varchar(20) not null,			
-			usn3 varchar(20) not null,bookletno3 varchar(20) not null,stu_sign3 varchar(20) not null,add_booklet3 varchar(20) not null,total_booklet3 varchar(20) not null,
-			usn4 varchar(20) not null,bookletno4 varchar(20) not null,stu_sign4 varchar(20) not null,add_booklet4 varchar(20) not null,total_booklet4 varchar(20) not null,			
-			usn5 varchar(20) not null,bookletno5 varchar(20) not null,stu_sign5 varchar(20) not null,add_booklet5 varchar(20) not null,total_booklet5 varchar(20) not null,
-			usn6 varchar(20) not null,bookletno6 varchar(20) not null,stu_sign6 varchar(20) not null,add_booklet6 varchar(20) not null,total_booklet6 varchar(20) not null,			
-			usn7 varchar(20) not null,bookletno7 varchar(20) not null,stu_sign7 varchar(20) not null,add_booklet7 varchar(20) not null,total_booklet7 varchar(20) not null,
-			usn8 varchar(20) not null,bookletno8 varchar(20) not null,stu_sign8 varchar(20) not null,add_booklet8 varchar(20) not null,total_booklet8 varchar(20) not null,			
-			usn9 varchar(20) not null,bookletno9 varchar(20) not null,stu_sign9 varchar(20) not null,add_booklet9 varchar(20) not null,total_booklet9 varchar(20) not null,primary key(form_name),
+			form_name varchar(40),
+			signed_by int(40),
+			degree varchar(40) ,
+			semester varchar(40) ,
+			exam_MMYYY varchar(40) ,
+			branch varchar(40),
+			subject varchar(40),
+			subcode varchar(40),
+			centre varchar(40),
+			usn_frm varchar(40),
+			usn_to varchar(40),
+			date varchar(40),
+			time_frm varchar(40),
+			time_to varchar(40),
+			usn1 varchar(40) ,bookletno1 varchar(40) ,stu_sign1 varchar(40) ,add_booklet1 varchar(40) ,total_booklet1 varchar(40) ,
+			usn2 varchar(40) ,bookletno2 varchar(40) ,stu_sign2 varchar(40) ,add_booklet2 varchar(40) ,total_booklet2 varchar(40) ,			
+			usn3 varchar(40) ,bookletno3 varchar(40) ,stu_sign3 varchar(40) ,add_booklet3 varchar(40) ,total_booklet3 varchar(40) ,
+			usn4 varchar(40) ,bookletno4 varchar(40) ,stu_sign4 varchar(40) ,add_booklet4 varchar(40) ,total_booklet4 varchar(40) ,			
+			usn5 varchar(40) ,bookletno5 varchar(40) ,stu_sign5 varchar(40) ,add_booklet5 varchar(40) ,total_booklet5 varchar(40) ,
+			usn6 varchar(40) ,bookletno6 varchar(40) ,stu_sign6 varchar(40) ,add_booklet6 varchar(40) ,total_booklet6 varchar(40) ,			
+			usn7 varchar(40) ,bookletno7 varchar(40) ,stu_sign7 varchar(40) ,add_booklet7 varchar(40) ,total_booklet7 varchar(40) ,
+			usn8 varchar(40) ,bookletno8 varchar(40) ,stu_sign8 varchar(40) ,add_booklet8 varchar(40) ,total_booklet8 varchar(40) ,			
+			usn9 varchar(40) ,bookletno9 varchar(40) ,stu_sign9 varchar(40) ,add_booklet9 varchar(40) ,total_booklet9 varchar(20) ,
+			primary key(form_name),
 			foreign key(signed_by) references signatures(userid));
 /*			usn10 varchar(20) not null,bookletno10 varchar(10) not null,stu_sign10 varchar(20) not null,add_booklet10 varchar(10) not null,total_booklet10 int(2) not null,			
 			usn11 varchar(20) not null,bookletno11 varchar(10) not null,stu_sign11 varchar(20) not null,add_booklet11 varchar(10) not null,total_booklet11 int(2) not null,
