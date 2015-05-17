@@ -28,7 +28,7 @@ function resetAddNewFormUI()
 	document.getElementById("form_title").value = "";
 	
 	alert("Form Added Successfully..");
-	window.location = "../Admin/AddNewForm.php";
+	window.location = "../Admin/AdminHomePage.php";
 }
 
 function deleteSelectedTBox()

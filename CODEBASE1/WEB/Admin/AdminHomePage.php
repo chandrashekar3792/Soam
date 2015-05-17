@@ -1,4 +1,32 @@
-<?php $Title = "Welcome Admin"; include_once "../Common/header.php" ?>
+<?php
+
+	include_once "../checkUserSession.php";
+	if(!$userIsLoggedIn)
+	{
+		//Redirect to login page..
+		echo "User is not logged in...";
+		header('Location: ../index.php');
+		exit;
+	}
+else if($_SESSION["LoggedUserType"] == "E")
+{
+	header('Location: ../Evaluator/home.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "R")
+{
+	header('Location: ../RecordKeeper/frontend.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "A")
+{
+	//header('Location: ./AdminHomePage.php');
+	//exit;
+	//continue showing this page...
+}
+	$Title = "Welcome Admin"; 
+	include_once "../Common/header.php" 
+?>
 <form class="doc" method="post" action="DeleteForm.php">
  
 	<!--h1>Available Form Templates</h1-->

@@ -28,7 +28,7 @@ $i=$i+1;
 
 
 
-$sql="insert into $formtitle values('$formname','$userid'";
+$sql="insert into $formtitle values('$formname','$userid')";
 $i=1;
 foreach ($_POST as $key=>$value)
 {

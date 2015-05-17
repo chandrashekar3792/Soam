@@ -55,7 +55,7 @@ $formtitle=$value;
 "[10px,770px]", "[60px,770px]",
 "[10px,800px]", "[60px,800px]",
 "[10px,830px]");*/
-//$result=mysql_query("select * from attendance_report where form_name='positio'");
+$result=mysql_query("select * from $formtitle where form_name='position'");
  $query=mysql_query("select form_img_path from form_list where form_title='$formtitle'");
  $count=mysql_num_rows($query);
   $pathlist=mysql_fetch_array($query,MYSQL_BOTH);
@@ -80,7 +80,7 @@ $formtitle=$value;
 		<tr>
 			<td>	
 <div id="fileDisplayArea">
-					<img  src = "<?php echo $pathlist[0];?>" opacity="100" id="UploadedImage" width="728px" height="512px"/>
+					<img  src = "<?php echo $pathlist[0];?>" opacity="100" id="UploadedImage" width="800px" height="512px"/>
 					<!--div id="HtmlElemDisplayContainer" style="position:absolute; top:165px; left:118px"-->
 				</div>
 				</td>
@@ -89,7 +89,7 @@ $formtitle=$value;
 
 				</table>
 
-<form action="saveaction.php" method="POST">
+<!--form action="saveaction.php" method="POST"-->
 <?php
 function parse($str)
 {
@@ -115,7 +115,7 @@ if ($pos1 === false || $pos2 === false || $pos3 === false  ) {
 }
 	$colscount=mysql_num_fields($result);
 //echo $colscount;
-$i=1;
+$i=2;
 $row = mysql_fetch_array($result, MYSQL_BOTH);
 //echo $row[0]."is the entry at index 0";
 while($i<$colscount)
@@ -123,14 +123,15 @@ while($i<$colscount)
 $myarray=parse($row[$i]);
 	$i=$i+1;
 
+
 	
 ?>
- <input type="text"  style="position:absolute; top:<?php echo $myarray[0] ?>;left:<?php echo $myarray[1] ?>"></input>
+ <input type="text"  style="width:100px; height:25px; position:absolute; top:<?php echo $myarray[1].'px' ?>;left:<?php echo $myarray[0].'px' ?>"></input>
 <?php
  }
 ?> 
 
-
+<form action="saveaction.php" method="POST">
 <p> FORM NAME: <input type="text" name="FORMNAME" /> </p>
 
 <input type="text" value="<?php echo $formtitle; ?>" name="formtitle" ></input>

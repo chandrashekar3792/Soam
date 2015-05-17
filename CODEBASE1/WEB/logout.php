@@ -1,8 +1,10 @@
 <?php
 session_start();
-unset($_SESSION);
+
+session_unset();
+
 session_destroy();
-session_write_close();
-header('Location: index.php');
+
+header('Location: ./index.php');
 exit;
 ?>

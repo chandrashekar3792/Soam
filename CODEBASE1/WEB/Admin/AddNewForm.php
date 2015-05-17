@@ -1,4 +1,30 @@
 <?php 
+
+include_once "../checkUserSession.php";
+if(!$userIsLoggedIn)
+{
+	//Redirect to login page..
+	echo "Redirecting to login page";
+	header('Location: ../index.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "E")
+{
+	header('Location: ../Evaluator/home.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "R")
+{
+	header('Location: ../RecordKeeper/frontend.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "A")
+{
+	//header('Location: ./AdminHomePage.php');
+	//exit;
+	//continue showing this page...
+}
+
 $Title = "Add New Form";
 include_once "../common/header.php";
 ?>

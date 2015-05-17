@@ -1,13 +1,13 @@
 <?php
 	header("Content-Type: text/plain");
 
-	//extract($_GET);
+	//extract($_POST);
 	extract($_POST);
 	include_once "../common/dbconnect.php";
 	
 	//$sql="SELECT * FROM form_list";
 	//$column_values_str = "";
-	// foreach($_GET as $key=>$value)
+	// foreach($_POST as $key=>$value)
 	// {
 		// //echo $key." value is ".$value;
 		// $column_values_str += $value.",";
@@ -44,16 +44,16 @@
 													1 ";
 		$i = 1;
 		
-		foreach($_GET as $key=>$value)
+		foreach($_POST as $key=>$value)
 		{
-			//echo count($_GET);
-			// //eliminate considering first 2 entry in the $_GET count, to eliminate considering first form_title entry..
-			// if($i < count($_GET))
+			//echo count($_POST);
+			// //eliminate considering first 2 entry in the $_POST count, to eliminate considering first form_title and path entry..
+			// if($i < count($_POST))
 			// {
 				// $createTbSql = $createTbSql.' , ';
 				// $insertSql = $insertSql.' , ';
 			// }//end of if..
-			//don't consider the first 2 entry of $_GET since its form_title..
+			//don't consider the first 2 entry of $_POST since its form_title..
 			if($i > 2)
 			{
 				//echo $key." value is ".$value;

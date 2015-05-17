@@ -1,8 +1,35 @@
-<link type="text/css" rel="stylesheet" href="../css/button.css" />
 <?php
+	include_once "../checkUserSession.php";
+	if(!$userIsLoggedIn)
+	{
+		//Redirect to login page..
+		echo "User is not logged in...";
+		header('Location: ../index.php');
+		exit;
+	}
+	else if($_SESSION["LoggedUserType"] == "E")
+	{
+		header('Location: ../Evaluator/home.php');
+		exit;
+		//continue showing this page..
+	}
+	else if($_SESSION["LoggedUserType"] == "R")
+	{
+		//header('Location: ../RecordKeeper/frontend.php');
+		//exit;
+		//continue showing this page.
+	}
+	else if($_SESSION["LoggedUserType"] == "A")
+	{
+		('Location: ./AdminHomePage.php');
+		exit;
+		//continue showing this page...
+	}
+
 $Title = "Records";
 include_once "../common/header.php";
 ?>
+<link type="text/css" rel="stylesheet" href="../css/button.css" />
 <h1>User Records</h1>
 <div style = "float:left; width: 50%;">
 

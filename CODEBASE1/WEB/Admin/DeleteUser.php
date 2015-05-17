@@ -1,4 +1,32 @@
-<?php $Title = "Delete User"; include_once "../Common/header.php" ?>  
+<?php 
+
+	
+	include_once "../checkUserSession.php";
+	if(!$userIsLoggedIn)
+	{
+		//Redirect to login page..
+		header('Location: ../index.php');
+		exit;
+	}
+else if($_SESSION["LoggedUserType"] == "E")
+{
+	header('Location: ../Evaluator/home.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "R")
+{
+	header('Location: ../RecordKeeper/frontend.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "A")
+{
+	//header('Location: ./AdminHomePage.php');
+	//exit;
+	//continue showing this page...
+} 
+	$Title = "Delete User";
+	include_once "../Common/header.php" 
+?>  
 <form class="col-md-12" method="GET" action="SearchByUser.php" onsubmit="sendUserSearchReq(); return false">
 <fieldset>
 

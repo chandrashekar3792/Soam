@@ -53,7 +53,7 @@
 		<div class="logout">
 		<!--button >Sign Out</button-->
 			<!--a href = "../logout.php" > <img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="border:0px; width:50px; height:50px;" src="../images/signout.png" /> </a-->
-			<a href = "../logout.php" > <img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="border:0px; width:40px; height:40px;" src="..//images/logout.png"" /> </a>
+			<a href = "../logout.php" > <img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="border:0px; width:40px; height:40px;" src="../images/logout.png" /> </a>
 	
 			<!--<p><a href = "../logout.php"> Sign Out </p></a> -->
 		<!-- Destroying the session and signing out the user -->

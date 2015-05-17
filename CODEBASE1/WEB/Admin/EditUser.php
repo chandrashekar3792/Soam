@@ -1,4 +1,34 @@
-<?php $Title = "Sign Up"; include_once "../Common/header.php" ?>
+<?php 
+
+
+	include_once "../checkUserSession.php";
+	if(!$userIsLoggedIn)
+	{
+		//Redirect to login page..
+		header('Location: ../index.php');
+		exit;
+	}
+else if($_SESSION["LoggedUserType"] == "E")
+{
+	header('Location: ../Evaluator/home.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "R")
+{
+	header('Location: ../RecordKeeper/frontend.php');
+	exit;
+}
+else if($_SESSION["LoggedUserType"] == "A")
+{
+	//header('Location: ./AdminHomePage.php');
+	//exit;
+	//continue showing this page...
+}
+
+ 
+	$Title = "Sign Up"; 
+	include_once "../Common/header.php" 
+?>
 
 <form method="post" action="./ValidateNewUser.php">
 	<fieldset>

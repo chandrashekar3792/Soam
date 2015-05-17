@@ -1,4 +1,35 @@
-<?php $Title = "SECURE ONLINE FORM MANAGEMENT"; include_once "/Common/header.php" ?>
+<?php $Title = "SECURE ONLINE FORM MANAGEMENT"; 
+include_once "./checkUserSession.php";
+if($userIsLoggedIn)
+{
+	//Check the user type and redirect to user's home page..
+	//echo $_SESSION["LoggedUserName"].' '.$_SESSION["LoggedUserType"];
+	if($_SESSION["LoggedUserType"] == "A")
+	{
+		//echo "Admin login successfull";
+		//echo "./Admin/AdminHomePage.php";
+		header('Location: ./Admin/AdminHomePage.php');
+	}
+	else if($_SESSION["LoggedUserType"] == "R")
+	{
+		//echo "Record-Keeper login successful from login index.php";
+		header('Location: ./RecordKeeper/frontend.php');
+	}
+	else if($_SESSION["LoggedUserType"] == "E")
+	{
+		//echo "Evaluator login successful login index.php";
+		header('Location: ./Evaluator/home.php');
+	}	
+	exit;
+}
+else
+{
+	//continue showing this login page to user...
+	//echo $_SESSION["LoggedUserName"].' '.$_SESSION["LoggedUserType"];	
+	//echo "no user is logged in...";
+}
+include_once "/Common/header.php";
+?>
 
 <div class="container">
 

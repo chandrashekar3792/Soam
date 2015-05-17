@@ -1,5 +1,33 @@
 <?php
-$Title = "Records";
+
+	include_once "../checkUserSession.php";
+	if(!$userIsLoggedIn)
+	{
+		//Redirect to login page..
+		echo "User is not logged in...";
+		header('Location: ../index.php');
+		exit;
+	}
+	else if($_SESSION["LoggedUserType"] == "E")
+	{
+		//header('Location: ../Evaluator/home.php');
+		//exit;
+		//continue showing this page..
+	}
+	else if($_SESSION["LoggedUserType"] == "R")
+	{
+		header('Location: ../RecordKeeper/frontend.php');
+		exit;
+		//continue showing this page.
+	}
+	else if($_SESSION["LoggedUserType"] == "A")
+	{
+		('Location: ./AdminHomePage.php');
+		exit;
+		//continue showing this page...
+	}
+	
+$Title = "Evaluators";
 include_once "../common/header.php";
 ?>
 <html>

@@ -1,6 +1,6 @@
 <?php
+include_once "./checkUserSession.php";
 header("Content-Type: text/plain");
-
 if(!isset($_POST["username"]) or !isset($_POST["password"]) or !isset($_POST["autho"]))
 {
 	die("Failure");
@@ -33,10 +33,11 @@ $count=mysql_num_rows($result);
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1)
 {
-
-// Register $myusername, $mypassword and redirect to file "login_success.php"
-//session_register("username");
-//session_register("password"); 
+	//set login session variables here.. since login is successful..
+	session_unset();//remove all existing variables in session..
+	//echo"User logged in successfully and session variables are set..";
+	$_SESSION["LoggedUserName"] = $login_name;
+	$_SESSION["LoggedUserType"] = $autho;
 	if($autho == "A")
 	{
 		//echo "Admin login successfull";
@@ -45,11 +46,13 @@ if($count==1)
 	}
 	else if($autho == "R")
 	{
-		echo "Record-Keeper login successful";
+		//echo "Record-Keeper login successful from authenticate user.php";
+		echo "./RecordKeeper/frontend.php'";
 	}
 	else if($autho == "E")
 	{
-		echo "Evaluator login successful";
+		//echo "Evaluator login successful from authenticate user.php";
+		echo "./Evaluator/home.php";
 	}	
 }
 else 
